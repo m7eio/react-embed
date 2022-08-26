@@ -1,7 +1,7 @@
 import * as React from 'react';
 import {BlockProps} from '../..';
 import {rule} from 'p4-css';
-import SeoParse from '../../service/seo-parse';
+import axios from 'axios';
 
 const blockClass = rule({
   d: 'flex',
@@ -38,15 +38,22 @@ const imageClass = rule({
   marginTop: '28px',
 });
 
-const Share: React.FC<BlockProps> = ({url, renderWrap}) => {
-  console.log('url',url)
-
+const Share: React.FC<BlockProps> = ({url, endPoint, renderWrap}) => {
   const [seoParse, setSeoParse] = React.useState<any>({});
-
   const fetchData = async () => {
-    const res = await SeoParse(url)
-    console.log('seo',res)
-    setSeoParse(res.data)
+    axios.get(`${endPoint}/api/v2/utils/seo-parse`, {
+      params: {
+        url
+      }
+    })
+    .then(function (res) {
+      console.log('seo',res)
+      setSeoParse(res?.data?.data)
+    })
+    .catch(function (error) {
+      console.log(error);
+    });
+    
   }
   React.useEffect(() => {
     fetchData()
@@ -55,9 +62,9 @@ const Share: React.FC<BlockProps> = ({url, renderWrap}) => {
   const title = seoParse?.twitterTitle || seoParse?.ogTitle || seoParse?.title;
   const desc = seoParse?.twitterDesc || seoParse?.ogDesc || seoParse?.desc;
   let icon =
-    seoParse?.icon.length > 1
+    seoParse?.icon?.length > 1
       ? seoParse?.icon[1]
-      : seoParse?.icon.length > 0
+      : seoParse?.icon?.length > 0
       ? seoParse?.icon[0]
       : '';
   if (icon && icon[0] !== 'h') {

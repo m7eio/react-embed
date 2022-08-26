@@ -8,6 +8,7 @@ const renderer: ReactEmbedRenderer = (Block: any, id, props, state) => {
     <Block
       {...state.url}
       id={id}
+      endPoint={props.endPoint}
       width={props.width}
       isDark={props.isDark!}
       renderWrap={props.renderWrap!}

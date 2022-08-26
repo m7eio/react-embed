@@ -15,6 +15,7 @@ export interface ParsedUrl {
 export type EmbedBlockId = string;
 export interface BlockProps extends ParsedUrl {
   id: EmbedBlockId;
+  endPoint?: string;
   width: number;
   isDark: boolean;
   renderVoid: (error?: Error) => React.ReactElement<any> | null;
@@ -67,6 +68,11 @@ export interface ReactEmbedProps {
    * URL to display.
    */
   url: string;
+
+  /**
+   * endPoint.
+   */
+  endPoint?: string;
 
   /**
    * True if dark mode enable. In that case will try to render content on dark
