@@ -1,4 +1,4 @@
-import React, {useState, useEffect} from 'react';
+import * as React from 'react';
 import {BlockProps} from '../..';
 import {rule} from 'p4-css';
 import SeoParse from '../../service/seo-parse';
@@ -41,14 +41,14 @@ const imageClass = rule({
 const Share: React.FC<BlockProps> = ({url, renderWrap}) => {
   console.log('url',url)
 
-  const [seoParse, setSeoParse] = useState<any>(null);
+  const [seoParse, setSeoParse] = React.useState<any>(null);
 
   const fetchData = async () => {
     const res = await SeoParse(url)
     console.log('seo',res)
     setSeoParse(res.data)
   }
-  useEffect(() => {
+  React.useEffect(() => {
     fetchData()
   }, [])
 
