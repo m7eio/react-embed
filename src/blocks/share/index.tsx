@@ -41,7 +41,7 @@ const imageClass = rule({
 const Share: React.FC<BlockProps> = ({url, renderWrap}) => {
   console.log('url',url)
 
-  const [seoParse, setSeoParse] = React.useState<any>(null);
+  const [seoParse, setSeoParse] = React.useState<any>({});
 
   const fetchData = async () => {
     const res = await SeoParse(url)
