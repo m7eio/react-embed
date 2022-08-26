@@ -18,10 +18,16 @@ const topClass = rule({
   alignItems: 'start',
 });
 
-const bottomClass = rule({
-  font: '#757575',
+const titleClass = rule({
   fontSize: '300',
   marginLeft: '28px'
+});
+
+const desClass = rule({
+  color: '#757575',
+  fontSize: '300',
+  marginLeft: '28px',
+  marginTop: '4px',
 });
 
 const iconClass = rule({
@@ -87,9 +93,9 @@ const Share: React.FC<BlockProps> = ({url, endPoint, renderWrap}) => {
             {icon && (
               <img className={iconClass} src={icon} alt="" />
             )}
-            <div className={bottomClass}>
-              {title && <div>{title}</div>}
-              {desc && <div>{desc}</div>}
+            <div>
+              {title && <div className={titleClass}>{title}</div>}
+              {desc && <div className={desClass}>{desc}</div>}
             </div>
           </div>
           {image && <img className={imageClass} src={image} alt="" />}
