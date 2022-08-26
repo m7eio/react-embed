@@ -84,6 +84,7 @@
     "cheerio": "^1.0.0-rc.12",
     "isomorphic-fetch": "^3.0.0",
     "p4-css": "^1.5.1",
+    "react": "^18.2.0",
     "react-instagram-embed": "^1.5.0",
     "react-player": "^1.15.3",
     "react-simple-player": "^1.1.0",
