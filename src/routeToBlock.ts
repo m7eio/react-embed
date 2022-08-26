@@ -100,7 +100,7 @@ const routeToBlock: ReactEmbedRouter = (blocks: Blocks, parsed: ParsedUrl) => {
       } else if (canPlay(url)) {
         return [blocks.reactPlayer, ''];
       } else {
-        return undefined;
+        return [blocks.share, url];
       }
   }
 };

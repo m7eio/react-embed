@@ -38,7 +38,9 @@ const imageClass = rule({
   marginTop: '28px',
 });
 
-const Shared: React.FC<BlockProps> = ({url, renderWrap}) => {
+const Share: React.FC<BlockProps> = ({url, renderWrap}) => {
+  console.log('url',url)
+
   const [seoParse, setSeoParse] = useState<any>(null);
 
   const fetchData = async () => {
@@ -89,4 +91,4 @@ const Shared: React.FC<BlockProps> = ({url, renderWrap}) => {
   }
 };
 
-export default Shared;
+export default Share;
