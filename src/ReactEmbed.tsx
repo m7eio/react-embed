@@ -41,6 +41,7 @@ const defaultBlocks: Blocks = {
   soundcloud: React.lazy(() => import('./blocks/soundcloud')),
   tweet: React.lazy(() => import('./blocks/tweet')),
   youtube: React.lazy(() => import('./blocks/youtube')),
+  shared: React.lazy(() => import('./blocks/shared')),
 };
 
 export type ReactEmbedRouterResult = undefined | [undefined | React.ComponentType<BlockProps>, EmbedBlockId];

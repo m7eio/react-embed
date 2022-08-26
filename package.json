@@ -1,6 +1,6 @@
 {
-  "name": "react-embed",
-  "version": "3.6.0",
+  "name": "@m7eio/react-embed",
+  "version": "1.0.0",
   "description": "",
   "author": {
     "name": "streamich",
@@ -81,6 +81,8 @@
     }
   },
   "dependencies": {
+    "cheerio": "^1.0.0-rc.12",
+    "isomorphic-fetch": "^3.0.0",
     "p4-css": "^1.5.1",
     "react-instagram-embed": "^1.5.0",
     "react-player": "^1.15.3",
