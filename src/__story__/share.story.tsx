@@ -8,7 +8,7 @@ storiesOf('share', module)
     return (
       <Box>
         <Embed
-          url={'https://mirror.xyz/m7e.eth/A7qYgyU55tBVkgsOYplBYV4dSMkI72P2cxi-QbceIfA'}
+          url={'https://mp.weixin.qq.com/s/8gP_DHYsWptFXj5Jw2gTgg'}
           endPoint="https://alpha.metajam.studio"
         />
       </Box>

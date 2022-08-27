@@ -19,7 +19,7 @@ const topClass = rule({
 
 const titleClass = rule({
   fontSize: '300',
-  marginLeft: '28px'
+  marginLeft: '28px',
 });
 
 const desClass = rule({
@@ -34,6 +34,7 @@ const iconClass = rule({
   h: '52px',
   bdrad: '12px',
   objectFit: 'cover',
+  flexShrink: '0',
 });
 
 const imageClass = rule({
@@ -43,35 +44,30 @@ const imageClass = rule({
   marginTop: '28px',
 });
 
-const Share: React.FC<BlockProps> = ({url, endPoint, showImage=true, renderWrap}) => {
+const Share: React.FC<BlockProps> = ({url, endPoint, showImage = true, renderWrap}) => {
   const [seoParse, setSeoParse] = React.useState<any>({});
   const fetchData = async () => {
-    axios.get(`${endPoint}/api/v2/utils/seo-parse`, {
-      params: {
-        url
-      }
-    })
-    .then(function (res) {
-      console.log('seo',res)
-      setSeoParse(res?.data?.data)
-    })
-    .catch(function (error) {
-      console.log(error);
-    });
-    
-  }
+    axios
+      .get(`${endPoint}/api/v2/utils/seo-parse`, {
+        params: {
+          url,
+        },
+      })
+      .then(function (res) {
+        console.log('seo', res);
+        setSeoParse(res?.data?.data);
+      })
+      .catch(function (error) {
+        console.log(error);
+      });
+  };
   React.useEffect(() => {
-    fetchData()
-  }, [])
+    fetchData();
+  }, []);
 
   const title = seoParse?.twitterTitle || seoParse?.ogTitle || seoParse?.title;
   const desc = seoParse?.twitterDesc || seoParse?.ogDesc || seoParse?.desc;
-  let icon =
-    seoParse?.icon?.length > 1
-      ? seoParse?.icon[1]
-      : seoParse?.icon?.length > 0
-      ? seoParse?.icon[0]
-      : '';
+  let icon = seoParse?.icon?.length > 2 ? seoParse?.icon[2] : seoParse?.icon?.length > 0 ? seoParse?.icon[0] : '';
   if (icon && icon[0] !== 'h') {
     if (icon.includes('//')) {
       icon = icon.replace('//', 'http://');
@@ -84,21 +80,19 @@ const Share: React.FC<BlockProps> = ({url, endPoint, showImage=true, renderWrap}
   const image = seoParse?.twitterImage || seoParse?.ogImage;
 
   if (!seoParse) {
-    return renderWrap(null)
+    return renderWrap(null);
   } else {
     return renderWrap(
-        <div className={blockClass}>
-          <div className={topClass}>
-            {icon && (
-              <div className={iconClass} style={{ background: `url(${icon}) no-repeat`, backgroundSize: "100%"}}  />
-            )}
-            <div>
-              {title && <div className={titleClass}>{title}</div>}
-              {desc && <div className={desClass}>{desc}</div>}
-            </div>
+      <div className={blockClass}>
+        <div className={topClass}>
+          {icon && <div className={iconClass} style={{background: `url(${icon}) no-repeat`, backgroundSize: '100%'}} />}
+          <div>
+            {title && <div className={titleClass}>{title}</div>}
+            {desc && <div className={desClass}>{desc}</div>}
           </div>
-          {showImage && image && <img className={imageClass} src={image} alt="" />}
         </div>
+        {showImage && image && <img className={imageClass} src={image} alt="" />}
+      </div>,
     );
   }
 };
