@@ -9,7 +9,7 @@ storiesOf('share', module)
       <Box>
         <Embed
           url={'https://mirror.xyz/m7e.eth/A7qYgyU55tBVkgsOYplBYV4dSMkI72P2cxi-QbceIfA'}
-          endPoint="https://alpha.metajam.studio/"
+          endPoint="https://alpha.metajam.studio"
         />
       </Box>
     );
@@ -19,7 +19,7 @@ storiesOf('share', module)
       <Box>
         <Embed
           url={'https://mirror.xyz/m7e.eth/A7qYgyU55tBVkgsOYplBYV4dSMkI72P2cxi-QbceIfA'}
-          endPoint="https://alpha.metajam.studio/"
+          endPoint="https://alpha.metajam.studio"
           showImage={false}
         />
       </Box>

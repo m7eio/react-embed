@@ -90,7 +90,7 @@ const Share: React.FC<BlockProps> = ({url, endPoint, showImage=true, renderWrap}
         <div className={blockClass}>
           <div className={topClass}>
             {icon && (
-              <img className={iconClass} src={icon} alt="" />
+              <div className={iconClass} style={{ background: `url(${icon}) no-repeat`, backgroundSize: "100%"}}  />
             )}
             <div>
               {title && <div className={titleClass}>{title}</div>}
