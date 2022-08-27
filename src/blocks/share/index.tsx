@@ -10,7 +10,6 @@ const blockClass = rule({
   w: '100%',
   bdrad: '12px',
   pad: '20px',
-  marginTop: '22px',
 });
 
 const topClass = rule({
@@ -44,7 +43,7 @@ const imageClass = rule({
   marginTop: '28px',
 });
 
-const Share: React.FC<BlockProps> = ({url, endPoint, renderWrap}) => {
+const Share: React.FC<BlockProps> = ({url, endPoint, showImage=true, renderWrap}) => {
   const [seoParse, setSeoParse] = React.useState<any>({});
   const fetchData = async () => {
     axios.get(`${endPoint}/api/v2/utils/seo-parse`, {
@@ -98,7 +97,7 @@ const Share: React.FC<BlockProps> = ({url, endPoint, renderWrap}) => {
               {desc && <div className={desClass}>{desc}</div>}
             </div>
           </div>
-          {image && <img className={imageClass} src={image} alt="" />}
+          {showImage && image && <img className={imageClass} src={image} alt="" />}
         </div>
     );
   }
